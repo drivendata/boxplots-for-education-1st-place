@@ -3,14 +3,13 @@
 # Online.py - an Online Learning Model for Semi-Structured Text Classification
 #
 # For: DrivenData.org/ERS's BoxPlots for Education Competition
-# By: Quoc Nam Le (quocnle at gmail.com or quoc.le@u.northwestern.edu)
+# By: Quoc Nam Le (quocnle at gmail.com or quoc.le at u.northwestern.edu)
 # License: MIT
 #
 # This approach is based on tingrtu's Online Learning masterpiece: http://bit.ly/1ItCVcv
 # It is customized for specifying flexible interactions between features and 
 # for decomposing original feature text into "bag of words" tokens.
 ##############################################################################
-
 
 from datetime import datetime
 from math import log, exp, sqrt
@@ -159,11 +158,9 @@ def data(path, label_path=None):
             else:           
                 # convert floats into categorical levels
                 # variables 9 (FTE) and 13 (Total) are only numericals
-           
                 if m == 13: 
                     if feat == "": feat = 0
                     feat = boundary(feat,b13)                 
-
                 if m == 9: 
                     if feat == "": feat = -3
                     feat = boundary(feat,b9)   
@@ -205,7 +202,6 @@ def data(path, label_path=None):
         row = line.rstrip().split(',')
 
         # Start with pairs.  Make pairs from interaction groups defined in pairs variable.
-
         for interactions in pairs:
             for i in xrange(len(interactions)):
                 for j in xrange(i+1,len(interactions)):
@@ -269,6 +265,7 @@ def update(alpha, w, n, x, p, y,k):
 # training and testing #######################################################
 start = datetime.now()
 
+# Number of models.  
 DIM = 104
 
 K = range(DIM)
