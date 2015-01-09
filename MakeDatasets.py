@@ -4,7 +4,7 @@
 # multi-multi classification and submission generation.
 #
 # For: DrivenData.org/ERS's BoxPlots for Education Competition
-# By: Quoc Nam Le (quocnle at gmail.com or quoc.le@u.northwestern.edu)
+# By: Quoc Nam Le (quocnle at gmail.com or quoc.le at u.northwestern.edu)
 # License: MIT
 # 
 # Files produced:

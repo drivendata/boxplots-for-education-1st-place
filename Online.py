@@ -115,9 +115,7 @@ def hash_it(s):
 #     x: list of hashes for predictors
 #     y: (if label_path is present) binary label
 def data(path, label_path=None):
-    
     # Boundaries for numberical binning of FTE (9) and Total (13)
-
     b13 = [-706.968,-8.879,
     7.85,41.972,
     73.798,109.55,
@@ -148,7 +146,6 @@ def data(path, label_path=None):
         # feat is the original raw text or value for feature
         c =0 
         for m, feat in enumerate(line.rstrip().split(',')):
-
             # Drop unwanted original features
             if m not in originals:
                 continue
@@ -280,9 +277,9 @@ rec = 0
 
 for i in range(epochs):
     for ID, x, y in data(train,label):
-
+        # Randomly choose whether or not to train with this example in this epoch
         if random.random() > use_example_probability: continue
-
+        # record counter
         rec += 1
         # get predictions and train on all labels
         for k in K:
