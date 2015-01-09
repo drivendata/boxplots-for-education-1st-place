@@ -19,7 +19,6 @@ import random
 import math
 import re
 
-
 if len(sys.argv) != 3: 
     print "Usage: pypy Online.py <epochs> <use_example_probability>"
     print "epochs is number of passes over the training data"
@@ -155,12 +154,9 @@ def data(path, label_path=None):
             if m not in originals:
                 continue
             
-
             if m == 0:
                 ID = int(feat)
-            else:
-                # one-hot encode strings with hash trick
-           
+            else:           
                 # convert floats into categorical levels
                 # variables 9 (FTE) and 13 (Total) are only numericals
            
@@ -186,11 +182,8 @@ def data(path, label_path=None):
                 parts = re.split(' |/|-',feat)
 
                 for i in range(len(parts)):
-
                     token = parts[i].strip().lower()
-
                     if token == '': continue
-
 
                     # First we hash each token along with its original position index
                     # For example, for the feature value "special education" we hash 
@@ -204,7 +197,6 @@ def data(path, label_path=None):
                     # This views all the feature values in a record as making up a single document
                     x.append( hash_it( token ) ) 
 
-
                 c = c + 1
         
         # Up to this point we've been breaking original features down into smaller features
@@ -217,22 +209,17 @@ def data(path, label_path=None):
         for interactions in pairs:
             for i in xrange(len(interactions)):
                 for j in xrange(i+1,len(interactions)):
-
                     pair = row[interactions[i]]+"_x_"+row[interactions[j]]
-
                     x.append( hash_it(pair) )
-
 
         # Do the same thing for triples
         for triple in triples:
             trip = row[triple[0]]+"_x_"+row[triple[1]] + '_x_' +row[triple[2]]
             x.append( hash_it(trip) )
             
-
         if label_path:
             y = [float(y) for y in label.readline().split(',')[1:]]
 
-    
         yield (ID, x, y) if label_path else (ID, x)
 
 
@@ -259,7 +246,6 @@ def predict(x, w):
         wTx += w[i] * 1.  # w[i] * x[i], but if i in x we got x[i] = 1.
     return 1. / (1. + exp(-max(min(wTx, 100.), -100.)))  # bounded sigmoid
 
-
 # D. Update given model
 # INPUT:
 # alpha: learning rate
@@ -278,11 +264,7 @@ def update(alpha, w, n, x, p, y,k):
         # (p - y) * x[i] is the current gradient
         # note that in our case, if i in x then x[i] = 1.
         n[i] += abs(p - y)
-
         w[i] = w[i] - ((p - y) * 1. ) * alpha / n[i] ** 0.5 
-
-
-
 
 # training and testing #######################################################
 start = datetime.now()
@@ -293,7 +275,6 @@ K = range(DIM)
 
 w = [[0.] * D for k in range(DIM)]
 n = [[0.] * D for k in range(DIM)]
-
 
 random.seed(1234)
 
@@ -321,18 +302,14 @@ h = ',Function__Aides Compensation,Function__Career & Academic Counseling,Functi
 
 output = './submission1234.csv'
 
-
 with open(output, 'w') as outfile:
     outfile.write(h + '\n')
     for ID, x in data(test):
-
         outfile.write(str(ID))
         for k in K:
             p = predict(x, w[k])
             outfile.write(',%s' % str(p))
-
         outfile.write('\n')
-
 
 print('Done, elapsed time: %s' % str(datetime.now() - start))
 
