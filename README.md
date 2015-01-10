@@ -3,7 +3,7 @@ TODO: Add iPython Notebook with details about the model approach and repro steps
 
 To reproduce results:
 
-Prequisites: python, pypy, pandas
+Prerequisites: python, pypy, pandas
 
 1. Download the 3 original datafiles (TrainingData.csv,TestData.csv,and SubmissionFormat.csv) to origdata folder
 2. Run "python MakeDatasets.py" - note that this currently requires Linux or OSX as it uses unix shell commands.  This can be easily fixed later.  This command produces the working files TrainPredictors.csv, TrainLabels.csv, and TestData2.csv.
