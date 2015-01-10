@@ -113,7 +113,7 @@ def hash_it(s):
 #     x: list of hashes for predictors
 #     y: (if label_path is present) binary label
 def data(path, label_path=None):
-    # Boundaries for numberical binning of FTE (9) and Total (13)
+    # Boundaries for numerical binning of FTE (9) and Total (13)
     b13 = [-706.968,-8.879,
     7.85,41.972,
     73.798,109.55,
@@ -159,7 +159,8 @@ def data(path, label_path=None):
                 if m == 9: 
                     if feat == "": feat = -3
                     feat = boundary(feat,b9)   
-
+                    
+                # Lowercase and trim so hashes match more often
                 feat = str(feat).strip().lower()
                 
                 # First we hash the original feature.  For example, if the
