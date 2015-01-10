@@ -73,7 +73,6 @@ print 'triples',triples
 D = 2 ** 18  # number of weights use for each model, we have 32 of them
 alpha = .10   # learning rate for sgd optimization
 
-
 # utilities ############################################
 
 # Used for assigning the number feat to a categorical level 0 to N
@@ -82,7 +81,6 @@ alpha = .10   # learning rate for sgd optimization
 #     b: list representing the boundaries for bins
 # OUTPUT:
 #     a categorical level 0 to N
-
 def boundary(feat,b):
     f = float(feat)
     s = 0
@@ -181,14 +179,14 @@ def data(path, label_path=None):
 
                     # First we hash each token along with its original position index
                     # For example, for the feature value "special education" we hash 
-                    # its tokens as "4_special" and "4_education" in each step of this loop
+                    # its tokens as "4_special" and "4_education" in successive steps of this loop
                     positioned_word = str(c) + '_' + token
                     x.append( hash_it( positioned_word ) )
 
                     # Next we hash each token by itself, ignoring any information about its position
                     # For example, for "special education" we hash "special" and "education"
                     # regardless of what index position the original feature appeared in.  
-                    # This views all the feature values in a record as making up a single document
+                    # This views all the feature values in an example as making up a single document
                     x.append( hash_it( token ) ) 
 
                 c = c + 1
@@ -215,7 +213,6 @@ def data(path, label_path=None):
 
         yield (ID, x, y) if label_path else (ID, x)
 
-
 # B. Bounded logloss
 # INPUT:
 #     p: our prediction
@@ -225,7 +222,6 @@ def data(path, label_path=None):
 def logloss(p, y):
     p = max(min(p, 1. - 10e-15), 10e-15)
     return -log(p) if y == 1. else -log(1. - p)
-
 
 # C. Get probability estimation on x
 # INPUT:
@@ -261,12 +257,9 @@ def update(alpha, w, n, x, p, y,k):
 
 # training and testing #######################################################
 start = datetime.now()
-
 # Number of models.  
 DIM = 104
-
 K = range(DIM)
-
 w = [[0.] * D for k in range(DIM)]
 n = [[0.] * D for k in range(DIM)]
 
