@@ -4,7 +4,7 @@ BoxPlots First Place Model
 
 To reproduce results:
 
-Prerequisites: python 2.7+, pypy 2.4.0, pandas 0.14.1
+Prerequisites: python 2.7+, pypy 2.2.1, pandas 0.14.1
 
 Scripts: MakeDatasets.py, Online.py
 
