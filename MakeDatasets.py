@@ -41,11 +41,8 @@ for column in cols:
     trainLabels[column] = np.where(train[parts[0]] == parts[1],1,0)
 
 # Write the TrainLabels.csv to disk
-trainLabels.to_csv('trainLabels0.csv',index=False)
+trainLabels.to_csv('trainLabels.csv',index=False)
 
-# A hack to get rid of the Unnamed: 0 field label, probably a better way to do this 
-os.system("cat trainLabels0.csv | sed 's/Unnamed: 0//' > TrainLabels.csv")
-os.system("rm trainLabels0.csv")
 
 #########################
 # Create TrainPredictors.csv
@@ -72,11 +69,8 @@ for column in train.columns.tolist():
 		train[column] = train[column].str.replace(',',' ')
 		train[column] = train[column].str.replace('"','')
 
-train.to_csv('trainPredictors0.csv',index=False)
+train.to_csv('trainPredictors.csv',index=False)
 
-# A hack to get rid of the Unnamed: 0 field label, probably a better way to do this 
-os.system("cat trainPredictors0.csv | sed 's/Unnamed: 0//' > TrainPredictors.csv")
-os.system("rm trainPredictors0.csv")
 
 #########################
 # Create TestData2.csv
@@ -105,12 +99,8 @@ for column in test.columns.tolist():
 		test[column] = test[column].str.replace(',',' ')
 		test[column] = test[column].str.replace('"','')
 
-test[train_col_order].to_csv('TestData0.csv',index=False)
+test[train_col_order].to_csv('TestData2.csv',index=False)
 
-
-# A hack to get rid of the Unnamed: 0 field label, probably a better way 
-os.system("cat TestData0.csv | sed 's/Unnamed: 0//' > TestData2.csv")
-os.system("rm TestData0.csv")
 
 
 
