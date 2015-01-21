@@ -70,7 +70,7 @@ triples = [[1,4,12]]
 print 'pairs',pairs
 print 'triples',triples 
 
-D = 2 ** 18  # number of weights use for each model, we have 32 of them
+D = 2 ** 18  # number of weights use for each model, we have 104 of them
 alpha = .10   # learning rate for sgd optimization
 
 # utilities ############################################
