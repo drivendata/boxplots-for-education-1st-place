@@ -15,8 +15,6 @@
 
 import pandas as pd
 import numpy as np
-import os
-import csv
 
 # Get the original datasets
 train = pd.read_csv('origdata/TrainingData.csv')
