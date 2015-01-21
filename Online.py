@@ -4,7 +4,7 @@
 #
 # For: DrivenData.org/ERS's BoxPlots for Education Competition
 # By: Quoc Nam Le (quocnle at gmail.com or quoc.le at u.northwestern.edu)
-# License: MIT
+# License: MIT (http://machinelearner.net/boxplots-for-education-1st-place/LICENSE.txt)
 #
 # This approach is based on tingrtu's Online Learning masterpiece: http://bit.ly/1ItCVcv
 # It is customized for specifying flexible interactions between features and 
