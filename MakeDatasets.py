@@ -5,7 +5,7 @@
 #
 # For: DrivenData.org/ERS's BoxPlots for Education Competition
 # By: Quoc Nam Le (quocnle at gmail.com or quoc.le at u.northwestern.edu)
-# License: MIT
+# License: MIT (http://machinelearner.net/boxplots-for-education-1st-place/LICENSE.txt)
 # 
 # Files produced:
 # (A) TrainLabels.csv - extracts training labels from TrainingData.csv 
